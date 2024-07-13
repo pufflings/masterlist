@@ -11,6 +11,7 @@ let sheetID = "1-CiEaVNos8-pKPM_MlXBEG67VmqeFwtxrw0whnaSwNY";
 let sheetPages = {
 
     masterlist: "masterlist",
+    masterlistTraits: "masterlist traits",
     masterlistLog: "masterlist log",
     inventory: "inventory",
     inventoryLog: "inventory log",
@@ -51,12 +52,13 @@ let options = {
 
         sheetPage: sheetPages.masterlist,
         logSheetPage: sheetPages.masterlistLog,
+        traitPage: sheetPages.masterlistTraits,
 
         itemAmount: 12,
         itemOrder: "asc",
 
-        filterColumn: 'Design Type',
-        searchFilterParams: ['ID', 'Owner', 'Designer', 'Artist'],
+        filterColumn: 'Type',
+        searchFilterParams: ['Design', 'Type', 'Owner', 'Designer', 'Artist'],
         fauxFolderColumn: 'Species',
 
     },

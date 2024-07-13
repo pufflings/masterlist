@@ -241,8 +241,8 @@
 
                             <!-- Item -->
                             <div class="d-flex justify-content-between mb-2">
-                                <b class="text-muted">Design Type</b>
-                                <span class="designtype"></span>
+                                <b class="text-muted">Type</b>
+                                <span class="type"></span>
                             </div>
 
                             <!-- Item -->
@@ -262,7 +262,18 @@
                             <!-- Item -->
                             <div class="">
                                 <b class="text-muted">Traits</b>
-                                <div class="pl-3 text-pre traits"></div>
+                                <div class="pl-3 pt-2 small" id="trait-table">
+                                    <div class="d-none">
+                                        <div class="row no-gutters" id="trait-entry">                                      
+                                            <div class="col-md-3">
+                                                <a class="traitlink" href="">
+                                                    <span class="trait"></span>
+                                                </a></span>
+                                            </div>
+                                            <div class="col-md-9"><span class="traitnotes"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <hr>
@@ -282,7 +293,8 @@
                                     <div class="d-none">
                                         <div class="row no-gutters" id="log-entry">
                                             <div class="col-md-3"><span class="timestamp"></span></div>
-                                            <div class="col-md-9"><span class="reason"></span></div>
+                                            <div class="col-md-3"><span class="username"></span></div>
+                                            <div class="col-md-6"><span class="reason"></span></div>
                                         </div>
                                     </div>
                                 </div>

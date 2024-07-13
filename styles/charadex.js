@@ -129,6 +129,7 @@ let getLog = (log, item, key = 'id') => {
         log.forEach((i) => {
             if (i[key].toLowerCase() === item[key].toLowerCase()) {
                 let newLog = {
+                    username: i.username,
                     timestamp: i.timestamp,
                     reason: i.reason,
                 };
@@ -141,11 +142,45 @@ let getLog = (log, item, key = 'id') => {
         logArr.forEach((i) => {
             let HTML = $("#log-entry").clone();
             HTML.find(".timestamp").html(i.timestamp);
+            HTML.find(".username").html(i.username);
             HTML.find(".reason").html(i.reason);
             rows.push(HTML);
         });
 
         $("#log-table").html(rows);
+
+    }
+}
+
+/* ================================================================ */
+/* Get a designs's traits
+/* ================================================================ */
+let getTraits = (trait, item, key = 'id') => {
+    if ($("#trait-table").length != 0) {
+
+        let traitArr = [];
+        trait.forEach((i) => {
+            if (i[key].toLowerCase() === item[key].toLowerCase()) {
+                let newTrait = {
+                    trait: i.trait.slice(i.trait.indexOf(" ") + 1,99),
+                    notes: i.notes,
+                    traitlink: folderURL + "traits.html?" + key + "=" + i.trait.slice(0, i.trait.indexOf(" ")),
+                };
+                traitArr.push(newTrait);
+            };
+        });
+
+        // Create Rows
+        let rows = [];
+        traitArr.forEach((i) => {
+            let HTML = $("#trait-entry").clone();
+            HTML.find(".trait").html(i.trait);
+            HTML.find(".traitlink").attr('href', i.traitlink);
+            HTML.find(".traitnotes").html(i.notes);
+            rows.push(HTML);
+        });
+
+        $("#trait-table").html(rows);
 
     }
 }
@@ -456,6 +491,10 @@ const masterlist = async (options) => {
         let logArray = await fetchSheet(charadexInfo.logSheetPage);
         getLog(logArray, singleCard);
 
+        // Grab the trait sheet and render traits
+        let traitArray = await fetchSheet(charadexInfo.traitPage);
+        getTraits(traitArray, singleCard);
+
         // List.js options
         let itemOptions = {
             valueNames: sheetArrayKeys(sheetArray),
@@ -743,3 +782,33 @@ const frontPage = (options) => {
 /* Softload pages
 ======================================================================= */
 $(window).on('pageshow',function(){loadPage()});
+
+/* ==================================================================== */
+/* Carousel
+======================================================================= */
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" slideActive", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " slideActive";
+}
