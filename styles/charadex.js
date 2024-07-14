@@ -164,7 +164,7 @@ let getTraits = (trait, item, key = 'id') => {
                 let newTrait = {
                     trait: i.trait.slice(i.trait.indexOf(" ") + 1,99),
                     notes: i.notes,
-                    traitlink: folderURL + "traits.html?" + key + "=" + i.trait.slice(0, i.trait.indexOf(" ")),
+                    traitlink: folderURL + "/traits.html?" + key + "=" + i.trait.slice(0, i.trait.indexOf(" ")),
                 };
                 traitArr.push(newTrait);
             };
