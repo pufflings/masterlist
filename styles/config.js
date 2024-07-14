@@ -120,7 +120,7 @@ let options = {
         itemOrder: "asc",
 
         filterColumn: 'Rarity',
-        searchFilterParams: ['Trait'],
+        searchFilterParams: ['Trait', 'Rarity', 'Description'],
         fauxFolderColumn: 'Type',
     
     },
