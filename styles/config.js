@@ -121,7 +121,7 @@ let options = {
 
         filterColumn: 'Rarity',
         searchFilterParams: ['Trait', 'Rarity', 'Description'],
-        fauxFolderColumn: 'Type',
+        fauxFolderColumn: 'Rarity',
     
     },
 
